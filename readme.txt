@@ -33,6 +33,12 @@ You can [open an issue on github](https://github.com/relu/contact-form-7-datepic
 
 == Changelog ==
 
+= 2.7.0 =
+* Remove all external links for make it GDPR Compliant
+* Remove admin option, make only unnecessary bloat and security issue
+  https://www.wordfence.com/blog/2020/04/high-severity-vulnerability-leads-to-closure-of-plugin-with-over-100000-installations/
+* Remove unnecessary languages (only english, german and hungarian available)
+
 = 2.6.0 =
 * Compatibility with CF7 4.6, replace deprecated calls (imelgrat)
 * Add bosnian translation for timepicker (sanidm)
