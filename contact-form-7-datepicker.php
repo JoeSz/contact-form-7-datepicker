@@ -1,5 +1,5 @@
 <?php
-/**
+/*
 Plugin Name: Contact Form 7 Datepicker
 Plugin URI: https://github.com/relu/contact-form-7-datepicker/
 Description: Easily add a date field using jQuery UI's datepicker to your CF7 forms. This plugin depends on Contact Form 7.
@@ -55,14 +55,16 @@ class ContactForm7Datepicker {
 			add_option('cf7dp_ui_theme', 'smoothness');
 	}
 
+	/**
+	 * Remove external link
+	 */
 	public static function enqueue_js() {
 		$regional = CF7_DateTimePicker::get_regional_match();
-		$proto = is_ssl() ? 'https' : 'http';
 
 		if (! empty($regional)) {
 			wp_enqueue_script(
 				'jquery-ui-' . $regional,
-				$proto . '://ajax.googleapis.com/ajax/libs/jqueryui/' . self::JQUERYUI_VERSION . '/i18n/datepicker-' . $regional . '.min.js',
+				plugins_url('js/jquery-ui-timepicker/i18n/datepicker-' . $regional . '.min.js', __FILE__),
 				array('jquery-ui-datepicker'),
 				self::JQUERYUI_VERSION,
 				true
@@ -131,25 +133,18 @@ class ContactForm7Datepicker {
 		);
 	}
 
+	/**
+	 * Remove option with external link for make it GDPR confirm.
+	 * Remove option too.
+	 * You could download the theme and override it with the cf7dp_custom_ui_theme hook.
+	 */
     public static function get_theme_uri() {
 		$theme = apply_filters('cf7dp_ui_theme', get_option('cf7dp_ui_theme'));
 
-		if (! is_admin() && $theme == 'disabled')
-			return;
+		if (! is_admin() && $theme == 'disabled') return;
 
-		$proto = is_ssl() ? 'https' : 'http';
+		return apply_filters( 'cf7dp_custom_ui_theme', plugins_url('js/themes/smoothness/jquery-ui.min.css', __FILE__) );
 
-        $custom_themes = (array)apply_filters('cf7dp_custom_ui_themes', array());
-
-        if (! is_admin() && ! empty($custom_themes) && array_key_exists($theme, $custom_themes)) {
-            $theme_css_uri = $custom_themes[$theme];
-
-            $uri = get_stylesheet_directory_uri() . '/' . ltrim($theme_css_uri, '/');
-        } else {
-            $uri = $proto . '://ajax.googleapis.com/ajax/libs/jqueryui/' . self::JQUERYUI_VERSION . '/themes/' . $theme . '/jquery-ui.min.css';
-        }
-
-        return $uri;
     }
 }
 
