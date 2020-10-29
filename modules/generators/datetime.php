@@ -4,11 +4,11 @@
 <table class="form-table">
 <tbody>
 	<tr>
-	<th scope="row"><?php echo esc_html( __( 'Field type', 'contact-form-7' ) ); ?></th>
+	<th scope="row"><?php echo esc_html__( 'Field type', 'contact-form-7' ); ?></th>
 	<td>
 		<fieldset>
-		<legend class="screen-reader-text"><?php echo esc_html( __( 'Field type', 'contact-form-7' ) ); ?></legend>
-		<label><input type="checkbox" name="required" /> <?php echo esc_html( __( 'Required field', 'contact-form-7' ) ); ?></label>
+		<legend class="screen-reader-text"><?php echo esc_html__( 'Field type', 'contact-form-7' ); ?></legend>
+		<label><input type="checkbox" name="required" /> <?php echo esc_html__( 'Required field', 'contact-form-7' ); ?></label>
 		</fieldset>
 	</td>
 
@@ -19,24 +19,24 @@
 
     <tr>
         <td>
-            <label><code>id</code> (<?php echo esc_html( __( 'optional', 'wpcf7' ) ); ?>)<br />
+            <label><code>id</code> (<?php echo esc_html__( 'optional', 'wpcf7' ); ?>)<br />
             <input type="text" name="id" class="idvalue oneline option" /></label>
         </td>
 
         <td>
-            <label><code>class</code> (<?php echo esc_html( __( 'optional', 'wpcf7' ) ); ?>)
+            <label><code>class</code> (<?php echo esc_html__( 'optional', 'wpcf7' ); ?>)
             <input type="text" name="class" class="classvalue oneline option" /></label>
         </td>
     </tr>
 
     <tr>
         <td>
-            <label><code>size</code> (<?php echo esc_html( __( 'optional', 'wpcf7' ) ); ?>)
+            <label><code>size</code> (<?php echo esc_html__( 'optional', 'wpcf7' ); ?>)
             <input type="text" name="size" class="numeric oneline option" /></label>
         </td>
 
         <td>
-            <label><code>maxlength</code> (<?php echo esc_html( __( 'optional', 'wpcf7' ) ); ?>)
+            <label><code>maxlength</code> (<?php echo esc_html__( 'optional', 'wpcf7' ); ?>)
             <input type="text" name="maxlength" class="numeric oneline option" /><label>
         </td>
     </tr>
@@ -184,11 +184,11 @@
 
     <tr>
         <td>
-            <?php echo esc_html( __( 'Default value', 'wpcf7' ) ); ?> (<?php echo esc_html( __( 'optional', 'wpcf7' ) ); ?>)<br /><input type="text" name="values" class="oneline" />
+            <?php echo esc_html__( 'Default value', 'wpcf7' ); ?> (<?php echo esc_html__( 'optional', 'wpcf7' ); ?>)<br /><input type="text" name="values" class="oneline" />
         </td>
 
         <td>
-            <br /><input type="checkbox" name="placeholder" class="option" />&nbsp;<?php echo esc_html( __( 'Use this text as placeholder?', 'wpcf7' ) ); ?>
+            <br /><input type="checkbox" name="placeholder" class="option" />&nbsp;<?php echo esc_html__( 'Use this text as placeholder?', 'wpcf7' ); ?>
         </td>
     </tr>
 
@@ -206,7 +206,7 @@
 
 	<br class="clear" />
 
-	<p class="description mail-tag"><label for="<?php echo esc_attr( $args['content'] . '-mailtag' ); ?>"><?php echo sprintf( esc_html( __( "To use the value input through this field in a mail field, you need to insert the corresponding mail-tag (%s) into the field on the Mail tab.", 'contact-form-7' ) ), '<strong><span class="mail-tag"></span></strong>' ); ?><input type="text" class="mail-tag code hidden" readonly="readonly" id="<?php echo esc_attr( $args['content'] . '-mailtag' ); ?>" /></label></p>
+	<p class="description mail-tag"><label for="<?php echo esc_attr( $args['content'] . '-mailtag' ); ?>"><?php echo sprintf( esc_html__( "To use the value input through this field in a mail field, you need to insert the corresponding mail-tag (%s) into the field on the Mail tab.", 'contact-form-7' ), '<strong><span class="mail-tag"></span></strong>' ); ?><input type="text" class="mail-tag code hidden" readonly="readonly" id="<?php echo esc_attr( $args['content'] . '-mailtag' ); ?>" /></label></p>
 </div>
 <script type="text/javascript">
 jQuery(function($){
