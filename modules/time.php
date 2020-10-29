@@ -61,6 +61,7 @@ class ContactForm7Datepicker_Time {
 		if (wpcf7_is_posted() && isset($_POST[$tag->name]))
 			$value = stripslashes_deep($_POST[$tag->name]);
 
+		$value = esc_attr( $value );
 		$atts['value'] = $value;
 
 		$dpOptions = array();
@@ -114,6 +115,7 @@ class ContactForm7Datepicker_Time {
 		$name = $tag['name'];
 
 		$value = trim($_POST[$name]);
+		$value = esc_attr( $value );
 
 		if ('time*' == $type && empty($value)) {
             		$result->invalidate($tag, wpcf7_get_message('invalid_required'));
