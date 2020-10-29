@@ -4,7 +4,7 @@ Plugin Name: Contact Form 7 Datepicker
 Plugin URI: https://github.com/JoeSz/contact-form-7-datepicker/
 Description: Easily add a date field using jQuery UI's datepicker to your CF7 forms. This plugin depends on Contact Form 7.
 Author: Aurel Canciu & Joe Szalai
-Version: 2.7.0
+Version: 2.8.0
 Author URI: https://github.com/relu/
 */
 
@@ -133,18 +133,23 @@ class ContactForm7Datepicker {
 		);
 	}
 
-	/**
-	 * Remove option with external link for make it GDPR confirm.
-	 * Remove option too.
-	 * You could download the theme and override it with the cf7dp_custom_ui_theme hook.
-	 */
     public static function get_theme_uri() {
 		$theme = apply_filters('cf7dp_ui_theme', get_option('cf7dp_ui_theme'));
 
-		if (! is_admin() && $theme == 'disabled') return;
+		if (! is_admin() && $theme == 'disabled')
+			return;
 
-		return apply_filters( 'cf7dp_custom_ui_theme', plugins_url('js/themes/smoothness/jquery-ui.min.css', __FILE__) );
+        $custom_themes = (array)apply_filters('cf7dp_custom_ui_themes', array());
 
+        if (! is_admin() && ! empty($custom_themes) && array_key_exists($theme, $custom_themes)) {
+            $theme_css_uri = $custom_themes[$theme];
+
+            $uri = get_stylesheet_directory_uri() . '/' . ltrim($theme_css_uri, '/');
+        } else {
+            return apply_filters( 'cf7dp_custom_ui_theme', plugins_url('js/themes/smoothness/jquery-ui.min.css', __FILE__) );
+        }
+
+        return $uri;
     }
 }
 
